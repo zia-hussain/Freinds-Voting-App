@@ -28,29 +28,33 @@ savedTheme === null ?
 
 
 // Define a global variable to track the serial number
-let todoSerialNumber = 0;
+let colon = " :"
 
 function addToDo(event) {
+    let tds = JSON.parse(localStorage.getItem('todos'));
     event.preventDefault();
+    const id = tds.length + 1;
 
     const toDoDiv = document.createElement("div");
     toDoDiv.classList.add('todo', `${savedTheme}-todo`);
+
+
 
     const newToDo = document.createElement('li');
     if (toDoInput.value === '') {
         alert("You must write something!");
     } else {
         // Increment the serial number for each new todo item
-        todoSerialNumber++;
-        newToDo.innerHTML = `<span class="beautiful-font">${todoSerialNumber}</span> ${toDoInput.value}`;
+        newToDo.innerHTML = `<span class="beautiful-font">${id} ${colon}</span> ${toDoInput.value}`;
         newToDo.classList.add('todo-item');
         toDoDiv.appendChild(newToDo);
-
-        savelocal(toDoInput.value);
+        savelocal({ id, text: toDoInput.value });
 
         const checked = document.createElement('button');
-        checked.innerHTML = '0';
+        checked.innerHTML = '<i class="fas fa-check"></i>'; // Initially, show the check icon
+        checked.dataset.checked = "false"; // Use a data attribute to track the state
         checked.classList.add('check-btn', `${savedTheme}-button`);
+        checked.addEventListener('click', toggleCheckButton); // Add a click event listener
         toDoDiv.appendChild(checked);
 
         const deleted = document.createElement('button');
@@ -63,6 +67,17 @@ function addToDo(event) {
     }
 }
 
+function toggleCheckButton() {
+    const button = this; // 'this' refers to the clicked button
+    let checkedValue = parseInt(button.dataset.checked, 10) || 0;
+
+    // Increment the checkedValue
+   let inc = checkedValue++;
+
+    // Update the button content and the dataset
+    button.innerHTML =`${inc} checkedValue.toString()`;
+    button.dataset.checked = checkedValue.toString();
+}
 
 
     // +++++++++++++++++++++++++++================================  delete +++++++++++++++++++++++++++================================ 
@@ -104,18 +119,12 @@ function deletecheck(event){
 
 
 //  +++++++++++++++++++++++++++================================ Saving to local storage: +++++++++++++++++++++++++++================================ 
-function savelocal(todo){
+function savelocal(todo) {
+    let todos = JSON.parse(localStorage.getItem('todos')) || [];
 
-    //   ==================Check: if item/s are there;
-    let todos;
-    if(localStorage.getItem('todos') === null) {
-        todos = [];
-    }
-    else {
-        todos = JSON.parse(localStorage.getItem('todos'));
-    }
-
+    // Push the todo and its serial number as an object
     todos.push(todo);
+
     localStorage.setItem('todos', JSON.stringify(todos));
 }
 
@@ -125,23 +134,15 @@ function getTodos() {
 
 
     //                 Check: if item/s are there;
-    let todos;
-    if(localStorage.getItem('todos') === null) {
-        todos = [];
-    }
-    else {
-        todos = JSON.parse(localStorage.getItem('todos'));
-    }
+    // Check if items are in localStorage
+    let todos = JSON.parse(localStorage.getItem('todos')) || [];
 
     todos.forEach(function(todo) {
-        // +++++++++++++++++++++++++++================================  toDo DIV;
         const toDoDiv = document.createElement("div");
         toDoDiv.classList.add("todo", `${savedTheme}-todo`);
 
-        // +++++++++++++++++++++++++++================================  Create LI
         const newToDo = document.createElement('li');
-        
-        newToDo.innerText = todo;
+        newToDo.innerHTML = `<span class="beautiful-font">${todo.id} ${colon}</span> ${todo.text}`;
         newToDo.classList.add('todo-item');
         toDoDiv.appendChild(newToDo);
 

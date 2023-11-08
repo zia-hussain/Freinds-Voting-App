@@ -416,7 +416,7 @@ form button {
         top: -30px;
     }
     #datetime{
-    margin: 0 5rem;
+    margin: 0 4.5rem;
 
     }
     form {
@@ -441,7 +441,11 @@ form button {
         width: 300px;
     }
 }
-@media only screen and (max-width: 280px) {
+@media only screen and (max-width: 300px) {
+    body{
+        height: 100vh;
+        width: 100vw;
+    }
     #datetime{
         margin: 0 4rem;
     }
