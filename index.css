@@ -21,8 +21,60 @@ body {
     position: absolute;
     top: 10px;
 }
+.left-txt{
+    width: 11.3vw;
+    height: 9vh;
+    border-radius: 50px;
+    background-color: #151513;
+    color: #fff;
+    position: absolute;
+    left: -12px;
+    top: 35px;
+    cursor: pointer;
+    animation: bounce 0.5s alternate infinite;
+}
+
+
+.repo{  
+    font-weight: 800;
+    
+    font-size: 15px;
+    position: absolute;
+    left: 10px;
+    display: inline-block;
+    flex-wrap: wrap;
+    top: 17px;
+    font-family: cursive;
+}
+.repo p {
+    
+    color: #fff; /* Set text color to white */
+    text-shadow: 0 0 10px #fff ;
+}
+.svg{
+    position: absolute;
+    top: 4px;
+    left: 105px;
+    display: flex;
+    gap: 3px;
+    font-size: 12px;
+}
+@keyframes bounce {
+    0% {
+        transform: rotate(-45deg) translateY(0);
+    }
+    50% {
+        transform: rotate(-45deg) translateY(-6px);
+    }
+    100% {
+        transform: rotate(-45deg) translateY(0);
+    }
+}
+
 /* Body light or darker themes */
 .standard {
+    width: 100vw;
+    height: 100vh;
     background-image: linear-gradient(100deg, #575656, #062e3f);
     color: #ffdfdb;
     transition: 0.3s linear;
@@ -30,6 +82,8 @@ body {
 }
 
 .light {
+    width: 100vw;
+    height: 100vh;
     background-image: linear-gradient(100deg, #d4f1ff, #ffffff);
     color: #1a150e;
     transition: 0.3s linear;
@@ -37,6 +91,8 @@ body {
 
 
 .darker {
+    width: 100vw;
+    height: 100vh;
     background-image: linear-gradient(100deg, #001214, #001f29);
     color: white;
     transition: 0.3s linear;
@@ -352,7 +408,24 @@ form button {
     transition: background-color 200ms ease-in-out 0s;
 }
 /* Responsive design */
+@media only screen and (max-width: 1200px) {
+.left-txt{
+    top: 32px;
+    left: -13px;
+    width: 13vw;
+    height: 5vh;
+}
+.repo{
+    top: 10px;
+}
+}
 @media only screen and (max-width: 1000px) {
+    .left-txt{
+        top: 33px;
+        left: -16px;
+        width: 17vw;
+        height: 5vh;
+    }
     .todo-list{
         margin-top: 40px;
     margin-left: -50px;
@@ -371,20 +444,26 @@ form button {
         margin-right: 0;
     }
 }
+@media only screen and (max-width: 900px) {
+    .left-txt{
+        width: 19vw;
+    }
 
+}
 @media only screen and (max-width: 800px) {
-
+    .left-txt{
+        width: 21vw;
+    }
+  
     #header {
         font-size: 2rem;
     }
 
     #title {
-        animation: 
-            animated-text 3s steps(16,end) 0.5s 1 normal both,
-            animated-cursor 750ms steps(16,end) infinite;
         margin-bottom: 10px;
         margin-top: 30px;
-        max-width: 330px;
+        max-width: 430px;
+        font-size: 24px;
 
     }
 
@@ -395,18 +474,66 @@ form button {
     list-style: none;
     }
 }
+@media only screen and (max-width: 700px) {
+.left-txt{
+    width: 24vw;
+    left: -18px;
+}
+@media only screen and (max-width: 600px) {
+    .left-txt{
+        width: 27vw;
+        left: -15px;
+    } 
+}
+}
+@media only screen and (max-width: 520px) {
+    .left-txt{
+width: 150px;
+height: 30px;
+top: 35px;
+left:-20px;
+animation: bounce2 0.5s alternate infinite;
+/* transform: rotate(100%); */
+    }
+    .repo{
+        top: 3px;
+    }
+    .svg{
+        left: 103px;
+        margin-left: 2px;
+        top: 5px;
+    }
+    #title
+    {
+        max-width: 400px;
+        margin-top: 120px;
+        padding-inline: 10px;
+        font-size: 21px;
+    }
+}
 
 @media only screen and (max-width: 400px) {
-    
+    .repo{
+       margin-left: 5px;
+    }
+.svg{
+    left: 90px;
+}
+   body{
+    width: 100vw;
+   }
     #header {
         font-size: 1.5rem;
     }
 
-    #title {
-        animation: 
-            animated-text 3.5s steps(16,end) 0.5s 1 normal both,
-            animated-cursor 750ms steps(16,end) infinite;
-        max-width: 255px;
+    #title
+    {
+        max-width: 350px;
+        margin-top: 120px;
+        padding-inline: 12px;
+        margin-left: 10px;
+        font-size: 22px;
+        letter-spacing: 0px;
     }
     .flexrow-container{
         position: absolute;
@@ -416,7 +543,8 @@ form button {
         top: -30px;
     }
     #datetime{
-    margin: 0 4.5rem;
+    margin: 0 5rem;
+
 
     }
     form {
@@ -442,11 +570,33 @@ form button {
     }
 }
 @media only screen and (max-width: 300px) {
+    .svg{
+        left: 100px;
+    }
+    #title{
+        display: flex;
+        flex-wrap: wrap;
+        max-width: 300px;
+    font-size: 20px;
+    padding-left: 5px;
+    }
     body{
         height: 100vh;
         width: 100vw;
     }
     #datetime{
         margin: 0 4rem;
+    }
+}
+
+@keyframes bounce2 {
+    0% {
+        transform: rotate(-45deg) translateY(0);
+    }
+    50% {
+        transform: rotate(-45deg) translateY(-5px);
+    }
+    100% {
+        transform: rotate(-45deg) translateY(0);
     }
 }
