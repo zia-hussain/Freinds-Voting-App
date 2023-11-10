@@ -10,11 +10,20 @@ body {
     display: flex;
     flex-direction: column;
     font-family: 'Work Sans', sans-serif;
-    min-height: 100vh;
+    min-height: 101vh;
     padding-top: 3%;
-    overflow: hidden;
-
+    overflow-x: hidden;
 }
+::-webkit-scrollbar {
+    width: 12px; 
+  }
+::-webkit-scrollbar-thumb {
+    background-color: #001f29; 
+    border-radius: 50px;
+}
+  ::-webkit-scrollbar-track {
+    background-color: #f0f0f0;
+  }
 
 #themes{
     font-size: 20px;
@@ -37,7 +46,6 @@ body {
 
 .repo{  
     font-weight: 800;
-    
     font-size: 15px;
     position: absolute;
     left: 10px;
@@ -98,10 +106,16 @@ body {
     transition: 0.3s linear;
 }
 
-#header, #form, #datetime {
+#header, #form{
     margin: 0 5rem;
     min-height: 10vh;
     width: 100%;
+}
+#datetime {
+margin-left: 37rem;
+    /* background: #001f29; */
+    /* max-height: 50vh; */
+    /* padding: 20px; */
 }
 
 #header {
@@ -217,6 +231,7 @@ form input {
     max-width: 500px;
     transition: background-color 200ms ease-in-out;
     width: 100%;
+    z-index: 1;
 }
 
 /* Input themes */
@@ -328,11 +343,10 @@ form button {
 }
 
 .todo-list {
-    margin-top: 40px;
+    /* background: #000; */
+   margin-top: 40px;
     margin-left: -50px;
     min-width: 30vw;
-/* margin-top: 40px; */
-    /* To remove the bullets of unordered list */
     list-style: none;
 }
 
@@ -412,11 +426,15 @@ form button {
 .left-txt{
     top: 32px;
     left: -13px;
-    width: 13vw;
+    width: 14vw;
     height: 5vh;
 }
 .repo{
+    font-size: 14px;
     top: 10px;
+}
+#datetime{
+    margin-left: 25rem;
 }
 }
 @media only screen and (max-width: 1000px) {
@@ -448,6 +466,9 @@ form button {
     .left-txt{
         width: 19vw;
     }
+    #datetime{
+        margin-left: 20rem;
+    }
 
 }
 @media only screen and (max-width: 800px) {
@@ -473,18 +494,27 @@ form button {
     min-width: 60vw;
     list-style: none;
     }
+    #datetime{
+        margin-left: 17rem;
+    }
 }
 @media only screen and (max-width: 700px) {
 .left-txt{
     width: 24vw;
     left: -18px;
 }
+#datetime{
+    margin-left: 15rem;
+}
+}
 @media only screen and (max-width: 600px) {
     .left-txt{
         width: 27vw;
         left: -15px;
     } 
-}
+    #datetime{
+        margin-left: 12rem;
+    }
 }
 @media only screen and (max-width: 520px) {
     .left-txt{
@@ -510,9 +540,12 @@ animation: bounce2 0.5s alternate infinite;
         padding-inline: 10px;
         font-size: 21px;
     }
+    #datetime{
+        margin-left: 8rem;
+    }
 }
 
-@media only screen and (max-width: 400px) {
+@media only screen and (max-width: 420px) {
     .repo{
        margin-left: 5px;
     }
@@ -543,9 +576,7 @@ animation: bounce2 0.5s alternate infinite;
         top: -30px;
     }
     #datetime{
-    margin: 0 5rem;
-
-
+   margin-left: 7rem;
     }
     form {
         align-items: center;
@@ -554,6 +585,7 @@ animation: bounce2 0.5s alternate infinite;
 
     form input {
         border-radius: 17px;
+        width: 100%;
     }
 
     form button {
@@ -569,7 +601,7 @@ animation: bounce2 0.5s alternate infinite;
         width: 300px;
     }
 }
-@media only screen and (max-width: 300px) {
+@media only screen and (max-width: 310px) {
     .svg{
         left: 100px;
     }
@@ -585,7 +617,7 @@ animation: bounce2 0.5s alternate infinite;
         width: 100vw;
     }
     #datetime{
-        margin: 0 4rem;
+        margin-left: 3.5rem;
     }
 }
 
@@ -599,4 +631,9 @@ animation: bounce2 0.5s alternate infinite;
     100% {
         transform: rotate(-45deg) translateY(0);
     }
+}
+@media only screen and (max-width: 280px) {
+body{
+    width: 100vw;
+}
 }

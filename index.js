@@ -31,9 +31,15 @@ savedTheme === null ?
 let colon = " :"
 
 function addToDo(event) {
+    let ser = 0 ;
     let tds = JSON.parse(localStorage.getItem('todos'));
     event.preventDefault();
-    const id = tds.length + 1;
+    if(tds){
+
+         ser = tds.length + 1 ;
+    }else {
+     ser + 1
+    }
 
     const toDoDiv = document.createElement("div");
     toDoDiv.classList.add('todo', `${savedTheme}-todo`);
@@ -45,10 +51,10 @@ function addToDo(event) {
         alert("You must write something!");
     } else {
         // Increment the serial number for each new todo item
-        newToDo.innerHTML = `<span class="beautiful-font">${id} ${colon}</span> ${toDoInput.value}`;
+        newToDo.innerHTML = `<span class="beautiful-font">${ser} ${colon}</span> ${toDoInput.value}`;
         newToDo.classList.add('todo-item');
         toDoDiv.appendChild(newToDo);
-        savelocal({ id, text: toDoInput.value });
+        savelocal({ ser, text: toDoInput.value });
 
         const checked = document.createElement('button');
         checked.innerHTML = '<i class="fas fa-check"></i>'; // Initially, show the check icon
@@ -132,17 +138,14 @@ function savelocal(todo) {
 
 function getTodos() {
 
-
-    //                 Check: if item/s are there;
-    // Check if items are in localStorage
     let todos = JSON.parse(localStorage.getItem('todos')) || [];
-
     todos.forEach(function(todo) {
+        // console.log(todo.ser)
         const toDoDiv = document.createElement("div");
         toDoDiv.classList.add("todo", `${savedTheme}-todo`);
 
         const newToDo = document.createElement('li');
-        newToDo.innerHTML = `<span class="beautiful-font">${todo.id} ${colon}</span> ${todo.text}`;
+        newToDo.innerHTML = `<span class="beautiful-font">${todo.ser} ${colon}</span> ${todo.text}`;
         newToDo.classList.add('todo-item');
         toDoDiv.appendChild(newToDo);
 
