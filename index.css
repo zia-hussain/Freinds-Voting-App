@@ -348,6 +348,7 @@ form button {
     margin-left: -50px;
     min-width: 30vw;
     list-style: none;
+    list-style: none;
 }
 
 .todo {
@@ -422,6 +423,12 @@ form button {
     transition: background-color 200ms ease-in-out 0s;
 }
 /* Responsive design */
+@media only screen and (min-width: 1200px) {
+.left-txt{
+    display: none;
+}
+
+}
 @media only screen and (max-width: 1200px) {
 .left-txt{
     top: 32px;
